@@ -1,0 +1,26 @@
+{
+  "name": "sassify-template",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tailwindcss -i ./src/css/tailwind.css -o ./dist/css/style.css --minify && cp ./dist/css/style.css ./src/css/style.css",
+    "watch": "tailwindcss -i ./src/css/tailwind.css -o ./dist/css/style.css --watch",
+    "serve": "npm-run-all --parallel watch start-server",
+    "start-server": "lite-server"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "lite-server": "^2.6.1",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.13"
+  },
+  "dependencies": {
+    "flowbite": "^3.1.2"
+  }
+}

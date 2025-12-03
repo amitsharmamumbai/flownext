@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* === Full Indigo Background for Active Accordion (Flowbite + Tailwind) === */
+
+/* Apply background to entire accordion item when open */
+.accordion-item:has([aria-expanded="true"]) {
+  @apply bg-indigo-600 text-white transition-all duration-500 ease-in-out;
+}
+
+/* Force the button (accordion title) to inherit Indigo background */
+.accordion-item:has([aria-expanded="true"]) button[aria-expanded="true"] {
+  @apply bg-indigo-600 text-white !important;
+}
+
+/* Make sure the content also matches the Indigo background */
+.accordion-item:has([aria-expanded="true"]) > div[id^="accordion-collapse-body"] {
+  @apply bg-indigo-600 text-white transition-all duration-500 ease-in-out;
+}
+
+/* Ensure smooth transition for collapse/expand */
+.accordion-item {
+  @apply transition-all duration-500 ease-in-out;
+}
+
+/* Override Flowbite's built-in bg-gray utilities */
+.accordion-item button {
+  @apply bg-white transition-all duration-500 ease-in-out;
+}
+
+  @keyframes scroll-left {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  @keyframes scroll-right {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0); }
+  }
+
+  .animate-scroll-left {
+    animation: scroll-left 10s linear infinite;
+  }
+  .animate-scroll-right {
+    animation: scroll-right 10s linear infinite;
+  }
+
+  /* Pause on hover */
+  .animate-scroll-left:hover,
+  .animate-scroll-right:hover {
+    animation-play-state: paused;
+  }
+
+
