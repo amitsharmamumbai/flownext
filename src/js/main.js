@@ -122,29 +122,40 @@ document.addEventListener("DOMContentLoaded", () => {
     form.appendChild(submitBtn);
   }
 
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
+  (function () {
 
-    // honeypot
-    var honey = form.querySelector('input[name="_honey"]');
-    if (honey && honey.value.trim() !== '') return;
+    var form = document.getElementById('contactForm');
+    if (!form) return;  // <-- IMPORTANT: prevents errors on other pages
 
-    // validation
-    if (!form.checkValidity()) {
-      form.reportValidity();
-      return;
-    }
+    var successBox = document.getElementById('cf-success');
+    var submitBtn = document.getElementById('cf-submit');
 
-    successBox.classList.remove('hidden');
-    submitBtn.disabled = true;
-    submitBtn.classList.add('opacity-60', 'cursor-not-allowed');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
 
-    form.reset();
+      // honeypot
+      var honey = form.querySelector('input[name="_honey"]');
+      if (honey && honey.value.trim() !== '') return;
 
-    setTimeout(function () {
-      successBox.classList.add('hidden');
-      submitBtn.disabled = false;
-      submitBtn.classList.remove('opacity-60', 'cursor-not-allowed');
-    }, 5000);
-  });
+      // validation
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      successBox.classList.remove('hidden');
+      submitBtn.disabled = true;
+      submitBtn.classList.add('opacity-60', 'cursor-not-allowed');
+
+      form.reset();
+
+      setTimeout(function () {
+        successBox.classList.add('hidden');
+        submitBtn.disabled = false;
+        submitBtn.classList.remove('opacity-60', 'cursor-not-allowed');
+      }, 5000);
+    });
+
+  })();
+
 });
