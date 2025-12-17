@@ -1,4 +1,4 @@
 {
   "version": 2,
-  "public": "src"
+  "outputDirectory": "src"
 }
